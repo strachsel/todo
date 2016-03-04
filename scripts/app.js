@@ -1,6 +1,6 @@
 angular.module("todoListApp", [])
 .controller('mainCtrl', function($scope){
-  $scope.helloWorld = function() {
+  $scope.ngChange = function() {
   };
   $scope.todos = [
    {"name" : "buy groceries"},
