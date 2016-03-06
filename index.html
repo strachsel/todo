@@ -4,6 +4,8 @@
   <title></title>
   <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   <link href='styles/main.css' rel='stylesheet' type="text/css">
+  <link href='styles/checkbox-empty.svg' rel='stylesheet' type="text/css">
+  <link href='styles/checkbox-filled.svg' rel='stylesheet' type="text/css">
 </head>
 <body ng-app="todoListApp">
     <h1 ng-click="helloWorld()">My TODOs</h1>
@@ -12,8 +14,9 @@
       <div class="add">
         <a href="" ng-click="addTodo()">+ Add a New Task</a>
       </div>
-      <div class="item" ng-class="{'editing-item' : editing, 'edited': todo.edited}" ng-repeat="todo in todos">
+      <div class="item" ng-class="{'editing-item' : editing, 'edited': todo.edited, 'completed': todo.completed}" ng-repeat="todo in todos | orderBy: 'completed'" ng-init="todo.completed = false">
         <input ng-model="todo.completed" type="checkbox"/>
+        <span ng-click="todo.completed = !todo.completed"></span>
         <label ng-hide="editing" ng-click="helloWorld()">{{todo.name}}</label>
         <input ng-change="todo.edited = true" ng-blur="editing = false;" ng-show="editing" ng-model="todo.name" class="editing-label" type="text"/>
 
